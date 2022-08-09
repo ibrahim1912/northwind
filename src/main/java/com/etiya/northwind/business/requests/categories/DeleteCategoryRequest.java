@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DeleteCategoryRequest {
 
-	private String customerId;
+	private int categoryId;
 }

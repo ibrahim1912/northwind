@@ -15,6 +15,6 @@ public class UpdateOrderRequest {
 	private LocalDate requiredDate;
 	private LocalDate shippedDate;
 	private int employeeId;
-	private int customerId;
+	private String customerId;
 }
 

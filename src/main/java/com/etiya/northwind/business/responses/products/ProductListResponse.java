@@ -17,11 +17,11 @@ public class ProductListResponse {
 
 	private int unitsInStock;
 
-	private int categoryId;
+	private int categoryCategoryId;
 
-	private String categoryName;
+	private String categoryCategoryName;
 	
-	private int supplierId;
+	private int supplierSupplierId;
 	
 	private String supplierCompanyName;
 }

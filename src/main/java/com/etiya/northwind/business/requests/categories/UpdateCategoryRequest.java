@@ -10,9 +10,6 @@ import lombok.NoArgsConstructor;
 public class UpdateCategoryRequest {
 
 	private int categoryId;
-	private String companyName;
-	private String contactName;
-	private String contactTitle;
-	private String address;
-	private String city;
+	private String categoryName;
+	
 }

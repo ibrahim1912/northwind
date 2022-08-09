@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,7 +23,6 @@ import lombok.NoArgsConstructor;
 public class Order {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="order_id")
 	private int orderId;
 	
@@ -37,6 +34,7 @@ public class Order {
 	
 	@Column(name="shipped_date")
 	private LocalDate shippedDate;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="employee_id")

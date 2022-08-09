@@ -6,4 +6,5 @@ import com.etiya.northwind.entities.concretes.Category;
 
 public interface CategoryRepository  extends JpaRepository<Category, Integer>{
 
+	Category findById(int id);
 }

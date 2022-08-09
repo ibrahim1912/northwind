@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateSupplierRequest {
-
+	private int supplierId;
 	private String companyName;
 	private String contactName;
 	private String contactTitle;

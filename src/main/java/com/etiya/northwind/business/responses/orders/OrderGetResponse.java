@@ -20,5 +20,4 @@ public class OrderGetResponse {
 	private int employeeId;
 	private String employeeFirstName;
 	private String employeeLastName;
-	private String employeeFullName;
 }
