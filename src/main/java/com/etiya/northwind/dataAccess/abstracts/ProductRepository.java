@@ -6,4 +6,5 @@ import com.etiya.northwind.entities.concretes.Product;
 
 public interface ProductRepository extends JpaRepository<Product,Integer>{
 
+	Product findById(int id);
 }

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 import com.etiya.northwind.business.abstracts.ProductService;
@@ -33,8 +31,6 @@ public class ProductManager implements ProductService {
 		this.modelMapperService = modelMapperService;
 	}
 
-	
-
 	@Override
     public void add(CreateProductRequest createProductRequest) {
         Product product = this.modelMapperService.forRequest()
@@ -43,13 +39,11 @@ public class ProductManager implements ProductService {
         this.productRepository.save(product);
     }
 
-
     @Override
     public void delete(DeleteProductRequest deleteProductRequest) {
         this.productRepository.deleteById(deleteProductRequest.getProductId());
 
     }
-
 
     @Override
     public void update(UpdateProductRequest updateProductRequest) {
@@ -62,7 +56,7 @@ public class ProductManager implements ProductService {
 
     @Override
     public ProductGetResponse getById(int id) {
-        Product product = this.productRepository.findById(id).get();
+        Product product = this.productRepository.findById(id);
         ProductGetResponse productResponse = this.modelMapperService.forResponse()
                 .map(product, ProductGetResponse.class);
         return productResponse;
@@ -87,6 +81,7 @@ public class ProductManager implements ProductService {
 		List<ProductListResponse> response = result.stream()
 				.map(supplier -> this.modelMapperService.forResponse().map(supplier, ProductListResponse.class))
 				.collect(Collectors.toList());
+		
 		return response;
 	}
 
@@ -94,7 +89,6 @@ public class ProductManager implements ProductService {
 	@Override
 	public  List<ProductListResponse> getAllSortedByAsc(String field ) {
 		Sort sort = Sort.by(Sort.Order.asc(field));
-		
 		
 		List<Product> result = this.productRepository.findAll(sort);
 		List<ProductListResponse> response = result.stream()
@@ -108,14 +102,12 @@ public class ProductManager implements ProductService {
 	public  List<ProductListResponse> getAllSortedByDesc(String field ) {
 		Sort sort = Sort.by(Sort.Order.desc(field));
 		
-		
 		List<Product> result = this.productRepository.findAll(sort);
 		List<ProductListResponse> response = result.stream()
 				.map(supplier -> this.modelMapperService.forResponse().map(supplier, ProductListResponse.class))
 				.collect(Collectors.toList());
 		return response;
 	}
-	
 	
 
 

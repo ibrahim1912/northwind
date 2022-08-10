@@ -16,5 +16,5 @@ public interface CategoryService {
 	
 	CategoryGetResponse getById(int id);
 	List<CategoryListResponse> getAll();
-	
+	 
 }

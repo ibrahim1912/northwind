@@ -2,6 +2,8 @@ package com.etiya.northwind.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +18,6 @@ import com.etiya.northwind.business.requests.products.DeleteProductRequest;
 import com.etiya.northwind.business.requests.products.UpdateProductRequest;
 import com.etiya.northwind.business.responses.products.ProductGetResponse;
 import com.etiya.northwind.business.responses.products.ProductListResponse;
-import com.etiya.northwind.entities.concretes.Product;
 
 @RestController
 @RequestMapping("/api/products")
@@ -29,7 +30,7 @@ public class ProductsController {
 		this.productService = productService;
 	}
 	@PostMapping("/add")
-    public void add(@RequestBody CreateProductRequest createProductRequest) {
+    public void add(@Valid @RequestBody CreateProductRequest createProductRequest) {
         this.productService.add(createProductRequest);
     }
 

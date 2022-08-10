@@ -6,4 +6,5 @@ import com.etiya.northwind.entities.concretes.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Integer>{
 
+	Order findById(int id);
 }

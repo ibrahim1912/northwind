@@ -16,9 +16,6 @@ import com.etiya.northwind.business.requests.orderDetails.DeleteOrderDetailReque
 import com.etiya.northwind.business.requests.orderDetails.UpdateOrderDetailRequest;
 import com.etiya.northwind.business.responses.orderDetails.OrderDetailGetResponse;
 import com.etiya.northwind.business.responses.orderDetails.OrderDetailListResponse;
-import com.etiya.northwind.entities.concretes.Order;
-import com.etiya.northwind.entities.concretes.OrderDetailId;
-import com.etiya.northwind.entities.concretes.Product;
 
 @RestController
 @RequestMapping("/api/orderdetails")

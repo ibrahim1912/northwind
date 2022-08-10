@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class CreateOrderDetailRequest {
 
 	private int orderId;
-	private int productId;
+	private int  productId;
 	private double unitPrice;
 	private int quantity;
 	private double discount;

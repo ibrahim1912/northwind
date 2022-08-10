@@ -50,7 +50,7 @@ public class OrderManager implements OrderService {
 
 	@Override
 	public OrderGetResponse getById(int id) {
-		Order order = this.orderRepository.findById(id).get();
+		Order order = this.orderRepository.findById(id);
 		OrderGetResponse response = this.modelMapperService.forResponse().map(order, OrderGetResponse.class);
 		return response;
 	}

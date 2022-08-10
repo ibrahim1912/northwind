@@ -16,7 +16,6 @@ import com.etiya.northwind.core.utilities.mapping.ModelMapperService;
 import com.etiya.northwind.dataAccess.abstracts.OrderDetailRepository;
 import com.etiya.northwind.entities.concretes.Order;
 import com.etiya.northwind.entities.concretes.OrderDetail;
-import com.etiya.northwind.entities.concretes.OrderDetailId;
 import com.etiya.northwind.entities.concretes.Product;
 
 @Service
@@ -24,6 +23,7 @@ public class OrderDetailManager implements OrderDetailService {
 
 	private OrderDetailRepository orderDetailRepository;
 	private ModelMapperService modelMapperService;
+
 
 	@Autowired
 	public OrderDetailManager(OrderDetailRepository orderDetailRepository, ModelMapperService modelMapperService) {
@@ -40,7 +40,7 @@ public class OrderDetailManager implements OrderDetailService {
 
 	@Override
 	public void delete(DeleteOrderDetailRequest deleteOrderDetailRequest) {
-		
+		this.orderDetailRepository.deleteOrderDetailWithOrderIdAndProductId(deleteOrderDetailRequest.getOrderId(), deleteOrderDetailRequest.getProductId());
 	}
 
 	@Override
