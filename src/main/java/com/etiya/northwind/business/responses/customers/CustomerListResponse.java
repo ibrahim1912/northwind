@@ -14,6 +14,8 @@ public class CustomerListResponse {
 	private String contactName;
 	private String contactTitle;
 	private String address;
-	private String city;
+	
+	private String cityName;
+	private String countryName;
 
 }

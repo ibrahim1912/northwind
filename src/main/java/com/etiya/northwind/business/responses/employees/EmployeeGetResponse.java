@@ -17,4 +17,7 @@ public class EmployeeGetResponse {
 	private String title;
 	private LocalDate birthDate;
 	private String address;
+	
+	private String cityName;
+	private String countryName;
 }

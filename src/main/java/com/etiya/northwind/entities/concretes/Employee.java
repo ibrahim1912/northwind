@@ -45,6 +45,14 @@ public class Employee {
 	@OneToMany(mappedBy="employee")
 	private List<Order> orders;
 	
+	@ManyToOne
+	@JoinColumn(name = "city_id")
+	private City city;
+	
+	@ManyToOne
+	@JoinColumn(name = "country_id")
+	private Country country;
+	
 	
 	@Column(name = "reports_to")
 	private Integer reportsTo;
@@ -55,25 +63,10 @@ public class Employee {
 //	 @JoinColumn(name = "reports_to")
 //	 private Employee reportsTo;
 //
-//	  @OneToMany(mappedBy = "reportsTo")
-//	  private List<Employee> reportingEmployees;
+//	 @OneToMany(mappedBy = "reportsTo")
+//	 private List<Employee> reportingEmployees;
 	
-//	@Column(name = "reports_to", insertable = false, updatable = false)
-//	private Integer reportsTo;
-	
-//	@ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "reports_to")
-//	private Employee supervisor;
-//
-//	@OneToMany(mappedBy = "supervisor")
-//	private List<Employee> subordinates;
-	
-//	@ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
-//	@JoinColumn(name = "reports_to")
-//	private Employee reportsTo;
-//	
-//	@OneToMany(mappedBy = "reportsTo")
-//	private List<Employee> subordinates;
+
 	
 	
 	

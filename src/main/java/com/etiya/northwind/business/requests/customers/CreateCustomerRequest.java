@@ -14,6 +14,7 @@ public class CreateCustomerRequest {
 	private String contactName;
 	private String contactTitle;
 	private String address;
-	private String city;
 	
+	private int cityId;
+	private int countryId;
 }

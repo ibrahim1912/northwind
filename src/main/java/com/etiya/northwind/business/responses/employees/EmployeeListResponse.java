@@ -19,5 +19,8 @@ public class EmployeeListResponse {
 	private String address;
 	private Integer reportsTo;
 	
+	private String cityName;
+	private String countryName;
+	
 	
 }
