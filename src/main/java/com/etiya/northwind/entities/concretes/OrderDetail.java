@@ -20,16 +20,6 @@ import lombok.NoArgsConstructor;
 @IdClass(OrderDetailId.class)
 public class OrderDetail {
 
-//	@Id
-//	@ManyToOne
-//	@JoinColumn(name="order_id")
-//	private Order order;
-//	
-//	@Id
-//	@ManyToOne
-//	@JoinColumn(name="product_id")
-//	private Product product;
-
 	@Id
     @Column(name="order_id")
     private int orderId;

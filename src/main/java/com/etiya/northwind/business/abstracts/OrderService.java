@@ -7,13 +7,15 @@ import com.etiya.northwind.business.requests.orders.DeleteOrderRequest;
 import com.etiya.northwind.business.requests.orders.UpdateOrderRequest;
 import com.etiya.northwind.business.responses.orders.OrderGetResponse;
 import com.etiya.northwind.business.responses.orders.OrderListResponse;
+import com.etiya.northwind.core.utilities.results.DataResult;
+import com.etiya.northwind.core.utilities.results.Result;
 
 public interface OrderService {
 
-	void add(CreateOrderRequest createOrderRequest);
-	void delete(DeleteOrderRequest deleteOrderRequest);
-	void update(UpdateOrderRequest updateOrderRequest);
+	Result add(CreateOrderRequest createOrderRequest);
+	Result delete(DeleteOrderRequest deleteOrderRequest);
+	Result update(UpdateOrderRequest updateOrderRequest);
 	
-	OrderGetResponse getById(int id);
-	List<OrderListResponse> getAll();
+	DataResult<OrderGetResponse> getById(int id);
+	DataResult<List<OrderListResponse>> getAll();
  }

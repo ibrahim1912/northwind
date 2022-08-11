@@ -18,6 +18,8 @@ import com.etiya.northwind.business.requests.products.DeleteProductRequest;
 import com.etiya.northwind.business.requests.products.UpdateProductRequest;
 import com.etiya.northwind.business.responses.products.ProductGetResponse;
 import com.etiya.northwind.business.responses.products.ProductListResponse;
+import com.etiya.northwind.core.utilities.results.DataResult;
+import com.etiya.northwind.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/api/products")
@@ -29,43 +31,46 @@ public class ProductsController {
 	public ProductsController(ProductService productService) {
 		this.productService = productService;
 	}
+	
+	
 	@PostMapping("/add")
-    public void add(@Valid @RequestBody CreateProductRequest createProductRequest) {
-        this.productService.add(createProductRequest);
+    public Result add(@Valid @RequestBody CreateProductRequest createProductRequest) {
+        return this.productService.add(createProductRequest);
     }
-
+	
+	
     @PostMapping("/delete")
-    public void delete(@RequestBody DeleteProductRequest deleteProductRequest) {
-        this.productService.delete(deleteProductRequest);
+    public Result delete(@RequestBody DeleteProductRequest deleteProductRequest) {
+    	return this.productService.delete(deleteProductRequest);
     }
 
     @PostMapping("/update")
-    public void update(@RequestBody UpdateProductRequest updateProductRequest) {
-        this.productService.update(updateProductRequest);
+    public Result update(@RequestBody UpdateProductRequest updateProductRequest) {
+        return this.productService.update(updateProductRequest);
     }
     
     @GetMapping("/getbyid")
-    public ProductGetResponse getById(@RequestParam int id) {
+    public DataResult<ProductGetResponse> getById(@RequestParam int id) {
         return this.productService.getById(id);
     }
 	
 	@GetMapping("/getall")
-	public List<ProductListResponse> getAll(){
+	public DataResult<List<ProductListResponse>> getAll(){
 		return this.productService.getAll();
 	}
 	
 	@GetMapping("/getallbypage")
-	public List<ProductListResponse> getAll(@RequestParam int pageNo,int pageSize){
+	public DataResult<List<ProductListResponse>>getAll(@RequestParam int pageNo,int pageSize){
 		return this.productService.getAll(pageNo,pageSize);
 	}
 	
 	@GetMapping("/getallsortedbyasc")
-	public  List<ProductListResponse> getAllSortedByAsc(@RequestParam String field){
+	public  DataResult<List<ProductListResponse>> getAllSortedByAsc(@RequestParam String field){
 		return this.productService.getAllSortedByAsc(field);
 	}
 	
 	@GetMapping("/getallsortedbydesc")
-	public  List<ProductListResponse> getAllSortedByDesc(@RequestParam String field){
+	public  DataResult<List<ProductListResponse>> getAllSortedByDesc(@RequestParam String field){
 		return this.productService.getAllSortedByDesc(field);
 	}
 }

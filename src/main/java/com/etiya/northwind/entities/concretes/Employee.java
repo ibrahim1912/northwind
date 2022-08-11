@@ -5,7 +5,10 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +24,6 @@ import lombok.NoArgsConstructor;
 public class Employee {
 
 	@Id
-	
 	@Column(name="employee_id")
 	private int employeeId;
 	
@@ -42,4 +44,37 @@ public class Employee {
 	
 	@OneToMany(mappedBy="employee")
 	private List<Order> orders;
+	
+	
+	@Column(name = "reports_to")
+	private Integer reportsTo;
+	
+	/////////////////////////////////////
+	
+//	 @ManyToOne
+//	 @JoinColumn(name = "reports_to")
+//	 private Employee reportsTo;
+//
+//	  @OneToMany(mappedBy = "reportsTo")
+//	  private List<Employee> reportingEmployees;
+	
+//	@Column(name = "reports_to", insertable = false, updatable = false)
+//	private Integer reportsTo;
+	
+//	@ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "reports_to")
+//	private Employee supervisor;
+//
+//	@OneToMany(mappedBy = "supervisor")
+//	private List<Employee> subordinates;
+	
+//	@ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "reports_to")
+//	private Employee reportsTo;
+//	
+//	@OneToMany(mappedBy = "reportsTo")
+//	private List<Employee> subordinates;
+	
+	
+	
 }

@@ -2,27 +2,25 @@ package com.etiya.northwind.business.abstracts;
 
 import java.util.List;
 
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
-
 import com.etiya.northwind.business.requests.products.CreateProductRequest;
 import com.etiya.northwind.business.requests.products.DeleteProductRequest;
 import com.etiya.northwind.business.requests.products.UpdateProductRequest;
 import com.etiya.northwind.business.responses.products.ProductGetResponse;
 import com.etiya.northwind.business.responses.products.ProductListResponse;
-import com.etiya.northwind.entities.concretes.Product;
+import com.etiya.northwind.core.utilities.results.DataResult;
+import com.etiya.northwind.core.utilities.results.Result;
 
 public interface ProductService {
 	
-	void add(CreateProductRequest createProductRequest);
-	void delete(DeleteProductRequest deleteProductRequest);
-	void update(UpdateProductRequest updateProductRequest);
+	Result add(CreateProductRequest createProductRequest);
+	Result delete(DeleteProductRequest deleteProductRequest);
+	Result update(UpdateProductRequest updateProductRequest);
 	
-	ProductGetResponse getById(int id);
-	List<ProductListResponse> getAll();
+	DataResult<ProductGetResponse> getById(int id);
+	DataResult<List<ProductListResponse>> getAll();
 	
-	List<ProductListResponse> getAll(int pageNo,int pageSize);
-	List<ProductListResponse> getAllSortedByAsc(String field);
-	List<ProductListResponse> getAllSortedByDesc(String field);
+	DataResult<List<ProductListResponse>> getAll(int pageNo,int pageSize);
+	DataResult<List<ProductListResponse>> getAllSortedByAsc(String field);
+	DataResult<List<ProductListResponse>> getAllSortedByDesc(String field);
 	
 }

@@ -13,10 +13,12 @@ import com.etiya.northwind.business.requests.orderDetails.UpdateOrderDetailReque
 import com.etiya.northwind.business.responses.orderDetails.OrderDetailGetResponse;
 import com.etiya.northwind.business.responses.orderDetails.OrderDetailListResponse;
 import com.etiya.northwind.core.utilities.mapping.ModelMapperService;
+import com.etiya.northwind.core.utilities.results.DataResult;
+import com.etiya.northwind.core.utilities.results.Result;
+import com.etiya.northwind.core.utilities.results.SuccessDataResult;
+import com.etiya.northwind.core.utilities.results.SuccessResult;
 import com.etiya.northwind.dataAccess.abstracts.OrderDetailRepository;
-import com.etiya.northwind.entities.concretes.Order;
 import com.etiya.northwind.entities.concretes.OrderDetail;
-import com.etiya.northwind.entities.concretes.Product;
 
 @Service
 public class OrderDetailManager implements OrderDetailService {
@@ -32,39 +34,46 @@ public class OrderDetailManager implements OrderDetailService {
 	}
 
 	@Override
-	public void add(CreateOrderDetailRequest createOrderDetailRequest) {
+	public Result add(CreateOrderDetailRequest createOrderDetailRequest) {
 		OrderDetail orderDetail = this.modelMapperService.forRequest().map(createOrderDetailRequest, OrderDetail.class);
 		this.orderDetailRepository.save(orderDetail);
 		
-	}
-
-	@Override
-	public void delete(DeleteOrderDetailRequest deleteOrderDetailRequest) {
-		this.orderDetailRepository.deleteOrderDetailWithOrderIdAndProductId(deleteOrderDetailRequest.getOrderId(), deleteOrderDetailRequest.getProductId());
-	}
-
-	@Override
-	public void update(UpdateOrderDetailRequest updateOrderDetailRequest) {
-		OrderDetail orderDetail = this.modelMapperService.forRequest().map(updateOrderDetailRequest, OrderDetail.class);
-		this.orderDetailRepository.save(orderDetail);
+		return new SuccessResult("ORDER.DETAIL.ADDED");
 		
 	}
 
 	@Override
-	public OrderDetailGetResponse getById(int orderId,int productId) {
+	public Result delete(DeleteOrderDetailRequest deleteOrderDetailRequest) {
+		this.orderDetailRepository.deleteOrderDetailWithOrderIdAndProductId(deleteOrderDetailRequest.getOrderId(), deleteOrderDetailRequest.getProductId());
+		
+		return new SuccessResult("ORDER.DETAIL.DELETED");
+	}
+
+	@Override
+	public Result update(UpdateOrderDetailRequest updateOrderDetailRequest) {
+		OrderDetail orderDetail = this.modelMapperService.forRequest().map(updateOrderDetailRequest, OrderDetail.class);
+		this.orderDetailRepository.save(orderDetail);
+		
+		return new SuccessResult("ORDER.DETAIL.UPDATED");
+		
+	}
+
+	@Override
+	public DataResult<OrderDetailGetResponse> getById(int orderId,int productId) {
 		OrderDetail orderDetail = this.orderDetailRepository.getByOrder_OrderIdAndProduct_ProductId(orderId,productId);
 		OrderDetailGetResponse response = this.modelMapperService.forResponse().map(orderDetail, OrderDetailGetResponse.class);
-		return response;
+		
+		return new SuccessDataResult<OrderDetailGetResponse>(response);
 	}
 	
 	@Override
-	public List<OrderDetailListResponse> getAll() {
+	public DataResult<List<OrderDetailListResponse>> getAll() {
 		List<OrderDetail> result = this.orderDetailRepository.findAll();
 		List<OrderDetailListResponse> response = result.stream().map(
 				orderDetail -> this.modelMapperService.forResponse().map(orderDetail, OrderDetailListResponse.class))
 				.collect(Collectors.toList());
 
-		return response;
+		return new SuccessDataResult<List<OrderDetailListResponse>>(response);
 	}
 
 }

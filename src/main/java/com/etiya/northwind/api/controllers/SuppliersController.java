@@ -16,6 +16,8 @@ import com.etiya.northwind.business.requests.suppliers.DeleteSupplierRequest;
 import com.etiya.northwind.business.requests.suppliers.UpdateSupplierRequest;
 import com.etiya.northwind.business.responses.suppliers.SupplierGetResponse;
 import com.etiya.northwind.business.responses.suppliers.SupplierListResponse;
+import com.etiya.northwind.core.utilities.results.DataResult;
+import com.etiya.northwind.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/api/suppliers")
@@ -29,26 +31,26 @@ public class SuppliersController {
 	}
 	
 	@PostMapping("/add")
-    public void add(@RequestBody CreateSupplierRequest createSupplierRequest) {
-        this.supplierService.add(createSupplierRequest);
+    public Result add(@RequestBody CreateSupplierRequest createSupplierRequest) {
+		return this.supplierService.add(createSupplierRequest);
     }
 
     @PostMapping("/delete")
-    public void delete(@RequestBody DeleteSupplierRequest deleteSupplierRequest) {
-        this.supplierService.delete(deleteSupplierRequest);
+    public Result delete(@RequestBody DeleteSupplierRequest deleteSupplierRequest) {
+    	return this.supplierService.delete(deleteSupplierRequest);
     }
 
     @PostMapping("/update")
-    public void update(@RequestBody UpdateSupplierRequest updateSupplierRequest) {
-        this.supplierService.update(updateSupplierRequest);
+    public Result update(@RequestBody UpdateSupplierRequest updateSupplierRequest) {
+        return this.supplierService.update(updateSupplierRequest);
     }
 
     @GetMapping("/getbyid")
-    public SupplierGetResponse getById(@RequestParam int id) {
+    public DataResult<SupplierGetResponse> getById(@RequestParam int id) {
         return this.supplierService.getById(id);
     }
 	@GetMapping("/getall")
-	public List<SupplierListResponse> getAll(){
+	public DataResult<List<SupplierListResponse>> getAll(){
 		return this.supplierService.getAll();
 	}
 }
