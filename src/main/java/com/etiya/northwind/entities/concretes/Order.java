@@ -41,7 +41,7 @@ public class Order {
 	private Employee employee;
 	
 	@ManyToOne
-	@JoinColumn(name="customer_id")
+	@JoinColumn(name="customer_number")
 	private Customer customer;
 	
 	@OneToMany(mappedBy="order")

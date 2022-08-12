@@ -37,4 +37,7 @@ public class Country {
 	
 	@OneToMany(mappedBy = "country")
 	private List<Employee> employees;
+	
+	@OneToMany(mappedBy = "country")
+	private List<Supplier> suppliers;
 }

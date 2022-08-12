@@ -13,4 +13,7 @@ public class CreateSupplierRequest {
 	private String contactName;
 	private String contactTitle;
 	private String address;
+	
+	private int cityId;
+	private int countyId;
 }

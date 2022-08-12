@@ -42,7 +42,7 @@ public class CustomerManager implements CustomerService {
 
 	@Override
 	public Result delete(DeleteCustomerRequest deleteCustomerRequest) {
-		this.customerRepository.deleteById(deleteCustomerRequest.getCustomerId());
+		this.customerRepository.deleteById(deleteCustomerRequest.getCustomerNumber());
 		
 		return new SuccessResult("CUSTOMER.DELETED");
 	}

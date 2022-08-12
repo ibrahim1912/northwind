@@ -15,6 +15,9 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, OrderD
 
 	OrderDetail getByOrder_OrderIdAndProduct_ProductId( int orderId,int productId);
 	
+	OrderDetail getByProduct_ProductId( int productId);
+	
+	
 	@Transactional 
 	@Modifying  
 	@Query("Delete From OrderDetail  Where order_id =:orderId and product_id =:productId")

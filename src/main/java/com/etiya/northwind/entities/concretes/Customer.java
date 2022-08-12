@@ -22,8 +22,8 @@ import lombok.NoArgsConstructor;
 public class Customer {
 
 	@Id
-	@Column(name="customer_id")
-	private String customerId;
+	@Column(name="customer_number")
+	private String customerNumber;
 	
 	@Column(name="company_name")
 	private String companyName;
@@ -47,5 +47,9 @@ public class Customer {
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
+	
+
+    @OneToMany(mappedBy = "customer")
+    private List<Cart> carts;
 
 }

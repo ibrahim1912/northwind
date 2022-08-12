@@ -46,8 +46,8 @@ public class CustomersController {
     }
 
     @GetMapping("/getbyid")
-    public DataResult<CustomerGetResponse> getById(@RequestParam String customerId) {
-        return this.customerService.getById(customerId);
+    public DataResult<CustomerGetResponse> getById(@RequestParam String customerNumber) {
+        return this.customerService.getById(customerNumber);
     }
 	
 	@GetMapping("/getall")

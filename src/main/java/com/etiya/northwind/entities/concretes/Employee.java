@@ -57,6 +57,8 @@ public class Employee {
 	@Column(name = "reports_to")
 	private Integer reportsTo;
 	
+	
+	
 	/////////////////////////////////////
 	
 //	 @ManyToOne
@@ -65,9 +67,6 @@ public class Employee {
 //
 //	 @OneToMany(mappedBy = "reportsTo")
 //	 private List<Employee> reportingEmployees;
-	
-
-	
 	
 	
 }

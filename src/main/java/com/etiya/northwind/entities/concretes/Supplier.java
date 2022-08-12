@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,5 +41,13 @@ public class Supplier {
 	
 	@OneToMany(mappedBy="supplier")
 	private List<Product> products;
+	
+	@ManyToOne
+	@JoinColumn(name = "city_id")
+	private City city;
+	
+	@ManyToOne
+	@JoinColumn(name = "country_id")
+	private Country country;
 
 }

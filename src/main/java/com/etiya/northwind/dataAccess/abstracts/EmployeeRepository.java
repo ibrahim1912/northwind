@@ -13,6 +13,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 	List<Employee> findByReportsTo(Integer reportsTo);
 	
 	
-	@Query("select e from Employee e where e.reportsTo.employeeId = :reportsTo")
-    List<Employee> reportingEmployees(@Param("reportsTo") int reportsTo);
+	
 }

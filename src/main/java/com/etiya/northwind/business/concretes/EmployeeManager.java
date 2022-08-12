@@ -80,7 +80,7 @@ public class EmployeeManager implements EmployeeService {
 	private void checkIEmployeeReportLimitExceeds(int reportsTo) {
 		List<Employee> result = this.employeeRepository.findByReportsTo(reportsTo);
 		if (result.size() >= 10) {
-			throw new BusinessException("A manager can only manage up to 10 employees");
+			throw new BusinessException("NO.MORE.EMPLOYEE.CAN.BE.ADDED");
 		}
 	}
 	

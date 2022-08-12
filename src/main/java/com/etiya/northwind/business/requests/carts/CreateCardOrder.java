@@ -1,4 +1,4 @@
-package com.etiya.northwind.business.requests.customers;
+package com.etiya.northwind.business.requests.carts;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeleteCustomerRequest {
+public class CreateCardOrder {
 
+	private int cartId;
+	private int orderId;
 	private String customerNumber;
 }

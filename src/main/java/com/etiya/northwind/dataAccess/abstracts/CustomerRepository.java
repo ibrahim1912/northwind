@@ -6,5 +6,5 @@ import com.etiya.northwind.entities.concretes.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, String> {
 
-	Customer findByCustomerId(String id);
+	Customer findByCustomerNumber(String id);
 }
