@@ -37,10 +37,15 @@ public class CartProductsController {
 		return this.cartProductService.delete(deleteCartProductRequest);
 	}
 	
-//	@PostMapping("/add")
-//	public Result update (@RequestBody UpdateCartProductRequest updateCartProductRequest){
-//		return this.cartProductService.update(updateCartProductRequest);
-//	}
+	@PostMapping("/update")
+	public Result update (@RequestBody UpdateCartProductRequest updateCartProductRequest){
+		return this.cartProductService.update(updateCartProductRequest);
+	}
+	
+	@GetMapping("/getbyid")
+	public DataResult<CartProductListResponse> getById(int cartProductId){
+		return this.cartProductService.getById(cartProductId);
+	}
 	
 	@GetMapping("/getall")
 	public DataResult<List<CartProductListResponse>> getAll(){

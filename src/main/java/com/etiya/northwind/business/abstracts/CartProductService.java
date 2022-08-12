@@ -12,12 +12,8 @@ import com.etiya.northwind.core.utilities.results.Result;
 public interface CartProductService {
 
 	Result add(CreateCartProductRequest createCartProductRequest);
-
 	Result update(UpdateCartProductRequest updateCartProductRequest);
-
 	Result delete(DeleteCartProductRequest deleteCartProductRequest);
-
 	DataResult<List<CartProductListResponse>> getAll();
-
 	DataResult<CartProductListResponse> getById(int cartProductId);
 }

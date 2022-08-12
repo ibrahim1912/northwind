@@ -22,7 +22,6 @@ import com.etiya.northwind.core.utilities.results.Result;
 import com.etiya.northwind.core.utilities.results.SuccessDataResult;
 import com.etiya.northwind.core.utilities.results.SuccessResult;
 import com.etiya.northwind.dataAccess.abstracts.ProductRepository;
-import com.etiya.northwind.entities.concretes.Category;
 import com.etiya.northwind.entities.concretes.Product;
 
 @Service

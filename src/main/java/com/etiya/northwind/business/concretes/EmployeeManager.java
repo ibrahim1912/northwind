@@ -20,7 +20,6 @@ import com.etiya.northwind.core.utilities.results.SuccessDataResult;
 import com.etiya.northwind.core.utilities.results.SuccessResult;
 import com.etiya.northwind.dataAccess.abstracts.EmployeeRepository;
 import com.etiya.northwind.entities.concretes.Employee;
-import com.etiya.northwind.entities.concretes.Product;
 
 @Service
 public class EmployeeManager implements EmployeeService {

@@ -13,7 +13,6 @@ import com.etiya.northwind.business.requests.cartproducts.UpdateCartProductReque
 import com.etiya.northwind.business.responses.cartProducts.CartProductListResponse;
 import com.etiya.northwind.core.utilities.mapping.ModelMapperService;
 import com.etiya.northwind.core.utilities.results.DataResult;
-import com.etiya.northwind.core.utilities.results.ErrorDataResult;
 import com.etiya.northwind.core.utilities.results.Result;
 import com.etiya.northwind.core.utilities.results.SuccessDataResult;
 import com.etiya.northwind.core.utilities.results.SuccessResult;
@@ -69,16 +68,9 @@ public class CartProductManager implements CartProductService{
 
     @Override
     public DataResult<CartProductListResponse> getById(int cartProductId) {
-        CartProductListResponse response = new CartProductListResponse();
-        if(this.cartProductRepository.existsById(cartProductId)){
-            CartProduct cartProduct = this.cartProductRepository.findById(cartProductId).get();
-            response = modelMapperService.forResponse().map(cartProduct, CartProductListResponse.class);
-            return new SuccessDataResult<CartProductListResponse>(response);
-        }
-        else{
-            System.out.println("Geçersiz Sepet Id");
-            return new ErrorDataResult<CartProductListResponse>(response);
-        }
+    	CartProduct cartProduct = this.cartProductRepository.findById(cartProductId).get();
+    	CartProductListResponse response = this.modelMapperService.forRequest().map(cartProduct, CartProductListResponse.class);
+		return new SuccessDataResult<CartProductListResponse>(response);
     }
 
 }

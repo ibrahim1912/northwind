@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.etiya.northwind.business.abstracts.CartService;
 import com.etiya.northwind.business.requests.carts.CreateCartRequest;
-import com.etiya.northwind.business.requests.carts.CreateRequestAddToOrder;
 import com.etiya.northwind.business.requests.carts.DeleteCartRequest;
 import com.etiya.northwind.business.requests.carts.UpdateCartRequest;
 import com.etiya.northwind.business.responses.carts.CartListResponse;
@@ -38,10 +37,15 @@ public class CartController {
 		return this.cartService.delete(deleteCartRequest);
 	}
 	
-//	@PostMapping("/update")
-//	public Result update (@RequestBody UpdateCartRequest updateCartRequest){
-//		return this.cartService.update(updateCartRequest);
-//	}
+	@PostMapping("/update")
+	public Result update (@RequestBody UpdateCartRequest updateCartRequest){
+		return this.cartService.update(updateCartRequest);
+	}
+	
+	@GetMapping("/getbyid")
+	public DataResult<CartListResponse> getById(int cartId){
+		return this.cartService.getById(cartId);
+	}
 	
 	@GetMapping("/getall")
 	public DataResult<List<CartListResponse>> getAll(){
@@ -49,8 +53,5 @@ public class CartController {
 	}
 	
 
-	@PostMapping("/addToOrder")
-	public Result addToOrder(@RequestBody CreateRequestAddToOrder createRequestAddToOrder) {
-		return this.cartService.addToOrder(createRequestAddToOrder);
-	}
+
 }
