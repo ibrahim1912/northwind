@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,6 +14,8 @@ import com.etiya.northwind.business.abstracts.ProductService;
 import com.etiya.northwind.business.requests.products.CreateProductRequest;
 import com.etiya.northwind.business.requests.products.DeleteProductRequest;
 import com.etiya.northwind.business.requests.products.UpdateProductRequest;
+import com.etiya.northwind.business.responses.dtos.PageItem;
+import com.etiya.northwind.business.responses.dtos.PageableResponse;
 import com.etiya.northwind.business.responses.products.ProductGetResponse;
 import com.etiya.northwind.business.responses.products.ProductListResponse;
 import com.etiya.northwind.core.exceptions.BusinessException;
@@ -22,6 +25,7 @@ import com.etiya.northwind.core.utilities.results.Result;
 import com.etiya.northwind.core.utilities.results.SuccessDataResult;
 import com.etiya.northwind.core.utilities.results.SuccessResult;
 import com.etiya.northwind.dataAccess.abstracts.ProductRepository;
+import com.etiya.northwind.entities.concretes.Category;
 import com.etiya.northwind.entities.concretes.Product;
 
 @Service
@@ -92,6 +96,23 @@ public class ProductManager implements ProductService {
 				.collect(Collectors.toList());
 
 		return new SuccessDataResult<List<ProductListResponse>>(response);
+	}
+	
+	@Override
+	public PageableResponse<List<ProductListResponse>> getAllByPage(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+		List<Product> result = this.productRepository.findAll(pageable).getContent();
+		Page<Product> resultPage = this.productRepository.findAll(pageable);
+		List<ProductListResponse> response = result.stream()
+				.map(supplier -> this.modelMapperService.forResponse().map(supplier, ProductListResponse.class))
+				.collect(Collectors.toList());
+		PageItem item = new PageItem();
+		item.setPageNo(pageNo);
+		item.setPageSize(pageSize);
+		item.setTotalPages(resultPage.getTotalPages());
+		item.setTotalData(resultPage.getTotalElements());
+		
+		return new PageableResponse<List<ProductListResponse>>(item,response);
 	}
 
 	@Override
