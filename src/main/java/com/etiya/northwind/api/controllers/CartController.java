@@ -2,6 +2,8 @@ package com.etiya.northwind.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,16 +31,16 @@ public class CartController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody CreateCartRequest createCartRequest){
+	public Result add(@Valid  @RequestBody CreateCartRequest createCartRequest){
 		return this.cartService.add(createCartRequest);
 	}
 	@PostMapping("/delete")
-	public Result delete(@RequestBody DeleteCartRequest deleteCartRequest){
+	public Result delete(@Valid  @RequestBody DeleteCartRequest deleteCartRequest){
 		return this.cartService.delete(deleteCartRequest);
 	}
 	
 	@PostMapping("/update")
-	public Result update (@RequestBody UpdateCartRequest updateCartRequest){
+	public Result update (@Valid @RequestBody UpdateCartRequest updateCartRequest){
 		return this.cartService.update(updateCartRequest);
 	}
 	

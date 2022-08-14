@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateOrderRequest {
+	
+	@NotEmpty
+	@Positive
 	private int orderId;
 	
 	@FutureOrPresent
@@ -21,7 +26,14 @@ public class CreateOrderRequest {
 	@Future
 	private LocalDate requiredDate;
 	
+	@Future
 	private LocalDate shippedDate;
+	
+	@NotEmpty
+	@Positive
 	private int employeeId;
+	
+	@NotEmpty
+	@Positive
 	private String customerNumber;
 }

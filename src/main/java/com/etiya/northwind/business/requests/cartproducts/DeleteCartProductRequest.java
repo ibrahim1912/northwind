@@ -1,5 +1,7 @@
 package com.etiya.northwind.business.requests.cartproducts;
 
+import javax.validation.constraints.Positive;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,5 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DeleteCartProductRequest {
 
-	  private int cartProductId;
+	@Positive
+	private int cartProductId;
 }

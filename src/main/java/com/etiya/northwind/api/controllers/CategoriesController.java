@@ -18,6 +18,7 @@ import com.etiya.northwind.business.requests.categories.DeleteCategoryRequest;
 import com.etiya.northwind.business.requests.categories.UpdateCategoryRequest;
 import com.etiya.northwind.business.responses.categories.CategoryGetResponse;
 import com.etiya.northwind.business.responses.categories.CategoryListResponse;
+import com.etiya.northwind.business.responses.dtos.PageableResponse;
 import com.etiya.northwind.core.utilities.results.DataResult;
 import com.etiya.northwind.core.utilities.results.Result;
 
@@ -31,31 +32,35 @@ public class CategoriesController {
 	public CategoriesController(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
-	
+
 	@PostMapping("/add")
-	public Result add(@Valid @RequestBody CreateCategoryRequest createCategoryRequest){
+	public Result add(@Valid @RequestBody CreateCategoryRequest createCategoryRequest) {
 		return this.categoryService.add(createCategoryRequest);
 	}
-	
+
 	@PostMapping("/delete")
-	public Result delete(@RequestBody DeleteCategoryRequest deleteCategoryRequest){
+	public Result delete(@Valid @RequestBody DeleteCategoryRequest deleteCategoryRequest) {
 		return this.categoryService.delete(deleteCategoryRequest);
 	}
-	
+
 	@PostMapping("/update")
-	public Result update(@RequestBody UpdateCategoryRequest updateCategoryRequest){
+	public Result update(@Valid @RequestBody UpdateCategoryRequest updateCategoryRequest) {
 		return this.categoryService.update(updateCategoryRequest);
 	}
-	
-	
+
 	@GetMapping("/getbyid")
-	public DataResult<CategoryGetResponse> getbById(@RequestParam int id){
+	public DataResult<CategoryGetResponse> getbById(@RequestParam int id) {
 		return this.categoryService.getById(id);
 	}
-	
+
 	@GetMapping("/getall")
-	public DataResult<List<CategoryListResponse>> getAll(){
+	public DataResult<List<CategoryListResponse>> getAll() {
 		return this.categoryService.getAll();
+	}
+
+	@GetMapping("/getallbypage")
+	public PageableResponse<List<CategoryListResponse>> getAllByPage(int pageNo,int pageSize) {
+		return this.categoryService.getAllByPage(pageNo,pageSize);
 	}
 	
 	

@@ -2,6 +2,8 @@ package com.etiya.northwind.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,17 +33,17 @@ public class SuppliersController {
 	}
 	
 	@PostMapping("/add")
-    public Result add(@RequestBody CreateSupplierRequest createSupplierRequest) {
+    public Result add(@Valid @RequestBody CreateSupplierRequest createSupplierRequest) {
 		return this.supplierService.add(createSupplierRequest);
     }
 
     @PostMapping("/delete")
-    public Result delete(@RequestBody DeleteSupplierRequest deleteSupplierRequest) {
+    public Result delete(@Valid @RequestBody DeleteSupplierRequest deleteSupplierRequest) {
     	return this.supplierService.delete(deleteSupplierRequest);
     }
 
     @PostMapping("/update")
-    public Result update(@RequestBody UpdateSupplierRequest updateSupplierRequest) {
+    public Result update(@Valid @RequestBody UpdateSupplierRequest updateSupplierRequest) {
         return this.supplierService.update(updateSupplierRequest);
     }
 

@@ -18,11 +18,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateProductRequest {
 	
-	
+	@Positive
+	@NotNull
 	private int productId;
 	
 	@NotBlank
-	@Size(min=1,max=10,message="Ürün ismi en az 1 ve en fazla 10 karakterli olabilir")
+	@Size(min=1,max=15)
 	private String productName;
 	
 	
@@ -33,13 +34,13 @@ public class CreateProductRequest {
 	@Positive
 	private int unitsInStock;
 	
-	@PositiveOrZero
+	@Positive
 	private int categoryId;
 	
 	@Positive
 	private int supplierId;
 	
-	@Positive
+	@PositiveOrZero
 	private int discontinued; 
 	
 	

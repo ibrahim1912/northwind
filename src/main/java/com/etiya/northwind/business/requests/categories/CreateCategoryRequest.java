@@ -2,6 +2,7 @@ package com.etiya.northwind.business.requests.categories;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateCategoryRequest {
 
-	
+	@Positive
 	private int categoryId;
 	
 	@NotBlank

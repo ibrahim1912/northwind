@@ -38,12 +38,12 @@ public class OrdersController {
 	}
 	
 	@PostMapping("/delete")
-	public Result delete(@RequestBody DeleteOrderRequest deleteOrderRequest){
+	public Result delete(@Valid @RequestBody DeleteOrderRequest deleteOrderRequest){
 		return this.orderService.delete(deleteOrderRequest);
 	}
 	
 	@PostMapping("/update")
-	public Result update(@RequestBody UpdateOrderRequest updateOrderRequest){
+	public Result update(@Valid @RequestBody UpdateOrderRequest updateOrderRequest){
 		return this.orderService.update(updateOrderRequest);
 	}
 	

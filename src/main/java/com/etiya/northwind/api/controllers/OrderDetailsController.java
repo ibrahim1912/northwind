@@ -2,6 +2,8 @@ package com.etiya.northwind.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,17 +34,17 @@ public class OrderDetailsController {
 	}
 
 	@PostMapping("/add")
-	public Result add(@RequestBody CreateOrderDetailRequest createOrderDetailRequest){
+	public Result add(@Valid @RequestBody CreateOrderDetailRequest createOrderDetailRequest){
 		return this.orderDetailService.add(createOrderDetailRequest);
 	}
 	
 	@PostMapping("/delete")
-	public Result delete(@RequestBody DeleteOrderDetailRequest deleteOrderDetailRequest){
+	public Result delete(@Valid @RequestBody DeleteOrderDetailRequest deleteOrderDetailRequest){
 		return this.orderDetailService.delete(deleteOrderDetailRequest);
 	}
 	
 	@PostMapping("/update")
-	public Result update(@RequestBody UpdateOrderDetailRequest updateOrderDetailRequest){
+	public Result update(@Valid @RequestBody UpdateOrderDetailRequest updateOrderDetailRequest){
 		return this.orderDetailService.update(updateOrderDetailRequest);
 	}
 	

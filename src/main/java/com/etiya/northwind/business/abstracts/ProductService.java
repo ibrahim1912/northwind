@@ -5,6 +5,7 @@ import java.util.List;
 import com.etiya.northwind.business.requests.products.CreateProductRequest;
 import com.etiya.northwind.business.requests.products.DeleteProductRequest;
 import com.etiya.northwind.business.requests.products.UpdateProductRequest;
+import com.etiya.northwind.business.responses.dtos.PageableResponse;
 import com.etiya.northwind.business.responses.products.ProductGetResponse;
 import com.etiya.northwind.business.responses.products.ProductListResponse;
 import com.etiya.northwind.core.utilities.results.DataResult;
@@ -20,6 +21,7 @@ public interface ProductService {
 	DataResult<List<ProductListResponse>> getAll();
 	
 	DataResult<List<ProductListResponse>> getAll(int pageNo,int pageSize);
+	PageableResponse<List<ProductListResponse>> getAllByPage( int pageNo,  int pageSize);
 	DataResult<List<ProductListResponse>> getAllSortedByAsc(String field);
 	DataResult<List<ProductListResponse>> getAllSortedByDesc(String field);
 	

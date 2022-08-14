@@ -2,11 +2,14 @@ package com.etiya.northwind.business.abstracts;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import com.etiya.northwind.business.requests.categories.CreateCategoryRequest;
 import com.etiya.northwind.business.requests.categories.DeleteCategoryRequest;
 import com.etiya.northwind.business.requests.categories.UpdateCategoryRequest;
 import com.etiya.northwind.business.responses.categories.CategoryGetResponse;
 import com.etiya.northwind.business.responses.categories.CategoryListResponse;
+import com.etiya.northwind.business.responses.dtos.PageableResponse;
 import com.etiya.northwind.core.utilities.results.DataResult;
 import com.etiya.northwind.core.utilities.results.Result;
 
@@ -18,5 +21,8 @@ public interface CategoryService {
 	
 	DataResult<CategoryGetResponse> getById(int id);
 	DataResult<List<CategoryListResponse>> getAll();
+	
+	PageableResponse<List<CategoryListResponse>> getAllByPage( int pageNo,  int pageSize);
+	
 	 
 }

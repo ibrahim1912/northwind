@@ -16,6 +16,7 @@ import com.etiya.northwind.business.abstracts.ProductService;
 import com.etiya.northwind.business.requests.products.CreateProductRequest;
 import com.etiya.northwind.business.requests.products.DeleteProductRequest;
 import com.etiya.northwind.business.requests.products.UpdateProductRequest;
+import com.etiya.northwind.business.responses.dtos.PageableResponse;
 import com.etiya.northwind.business.responses.products.ProductGetResponse;
 import com.etiya.northwind.business.responses.products.ProductListResponse;
 import com.etiya.northwind.core.utilities.results.DataResult;
@@ -40,12 +41,12 @@ public class ProductsController {
 	
 	
     @PostMapping("/delete")
-    public Result delete(@RequestBody DeleteProductRequest deleteProductRequest) {
+    public Result delete(@Valid @RequestBody DeleteProductRequest deleteProductRequest) {
     	return this.productService.delete(deleteProductRequest);
     }
 
     @PostMapping("/update")
-    public Result update(@RequestBody UpdateProductRequest updateProductRequest) {
+    public Result update(@Valid @RequestBody UpdateProductRequest updateProductRequest) {
         return this.productService.update(updateProductRequest);
     }
     
@@ -59,9 +60,14 @@ public class ProductsController {
 		return this.productService.getAll();
 	}
 	
-	@GetMapping("/getallbypage")
+	@GetMapping("/getallpage")
 	public DataResult<List<ProductListResponse>>getAll(@RequestParam int pageNo,int pageSize){
 		return this.productService.getAll(pageNo,pageSize);
+	}
+	
+	@GetMapping("/getallbypage")
+	public PageableResponse<List<ProductListResponse>>getAllByPage(@RequestParam int pageNo,int pageSize){
+		return this.productService.getAllByPage(pageNo,pageSize);
 	}
 	
 	@GetMapping("/getallsortedbyasc")

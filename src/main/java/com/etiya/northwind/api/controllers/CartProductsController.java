@@ -2,6 +2,8 @@ package com.etiya.northwind.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,28 +29,29 @@ public class CartProductsController {
 	public CartProductsController(CartProductService cartProductService) {
 		this.cartProductService = cartProductService;
 	}
-	
+
 	@PostMapping("/add")
-	public Result add(@RequestBody CreateCartProductRequest createCartProductRequest){
+	public Result add(@Valid @RequestBody CreateCartProductRequest createCartProductRequest) {
 		return this.cartProductService.add(createCartProductRequest);
 	}
+
 	@PostMapping("/delete")
-	public Result delete(@RequestBody DeleteCartProductRequest deleteCartProductRequest){
+	public Result delete(@Valid @RequestBody DeleteCartProductRequest deleteCartProductRequest) {
 		return this.cartProductService.delete(deleteCartProductRequest);
 	}
-	
+
 	@PostMapping("/update")
-	public Result update (@RequestBody UpdateCartProductRequest updateCartProductRequest){
+	public Result update(@Valid @RequestBody UpdateCartProductRequest updateCartProductRequest) {
 		return this.cartProductService.update(updateCartProductRequest);
 	}
-	
+
 	@GetMapping("/getbyid")
-	public DataResult<CartProductListResponse> getById(int cartProductId){
+	public DataResult<CartProductListResponse> getById(int cartProductId) {
 		return this.cartProductService.getById(cartProductId);
 	}
-	
+
 	@GetMapping("/getall")
-	public DataResult<List<CartProductListResponse>> getAll(){
+	public DataResult<List<CartProductListResponse>> getAll() {
 		return this.cartProductService.getAll();
 	}
 }
