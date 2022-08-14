@@ -51,7 +51,7 @@ public class CartManager implements CartService {
 
 	@Override
 	public Result delete(DeleteCartRequest deleteCartRequest) {
-		this.cartProductRepository.deleteById(deleteCartRequest.getCartId());
+		this.cartRepository.deleteById(deleteCartRequest.getCartId());
 		return new SuccessResult();
 	}
 
